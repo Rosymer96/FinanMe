@@ -1,0 +1,58 @@
+<h1>Mis gastos:</h1>
+<form [formGroup]="form" (submit)="filterData()">
+  <mat-form-field class="category-input">
+    <mat-label>Categoría</mat-label>
+    <mat-select formControlName="category">
+      @for(category of categories; track $index){
+      <mat-option [value]="category">{{ category }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rango de fechas</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matInput matStartDate formControlName="startDate" />
+      <input matInput matEndDate formControlName="endDate" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="description" />
+  </mat-form-field>
+  <button mat-raised-button type="submit">Filtrar</button>
+  <button mat-raised-button type="button">Limpiar filtros</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Categoria</th>
+      <th>Descripción</th>
+      <th>Importe</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(gasto of filteredGastos; track $index){
+    <tr>
+      <td>{{ gasto.date | date : "dd/MM/yyyy" }}</td>
+      <td>{{ gasto.category }}</td>
+      <td>{{ gasto.description }}</td>
+      <td>€ {{ gasto.expense }}</td>
+      <td>
+        <button type="button" (click)="onDeleteExpense(gasto.id)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Total</td>
+      <td>€ {{ total }}</td>
+    </tr>
+  </tfoot>
+</table>

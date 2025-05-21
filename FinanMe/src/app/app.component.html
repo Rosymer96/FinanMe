@@ -1,0 +1,11 @@
+<app-expenses-form
+  (newExpense)="onNewExpense($event)"
+  [categories]="categories"
+></app-expenses-form>
+<app-expense-list
+  [gastos]="gastos"
+  [total]="total"
+  (deleteExpense)="onDeleteExpense($event)"
+  [categories]="categories"
+></app-expense-list>
+<router-outlet />

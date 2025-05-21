@@ -1,0 +1,47 @@
+<form [formGroup]="form" (submit)="onAddExpense()">
+  <mat-form-field>
+    <mat-label for="gasto">Ingresa el gasto</mat-label>
+    <input
+      matInput
+      type="number"
+      name="gasto"
+      id="gasto"
+      formControlName="expense"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="categorias">Categoria:</mat-label>
+    <mat-select name="categorias" id="categorias" formControlName="category">
+      @for(category of categories; track $index ){
+      <mat-option [value]="category">{{ category }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="descripcion">Descripcion</mat-label>
+    <input
+      matInput
+      type="text"
+      name="descripcion"
+      id="descripcion"
+      formControlName="description"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="fecha">DD/MM/YYYY</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      name="fecha"
+      id="fecha"
+      min="2025-01-01"
+      max="{{ today }}"
+      formControlName="date"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button type="submit">Añadir</button>
+</form>
