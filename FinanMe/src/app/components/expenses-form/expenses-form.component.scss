@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 3vw;
+  gap: 3vw;
+  justify-content: space-between;
+  .form-field {
+    width: 48%;
+    height: 8vh;
+  }
+  .form-field-date {
+    width: 30%;
+    height: 8vh;
+  }
+  .form-field-description {
+    width: 66%;
+    height: 8vh;
+  }
+  .add-button {
+    left: 70vw;
+  }
+}

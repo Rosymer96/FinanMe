@@ -1,25 +1,32 @@
 {
   "gastos": [
     {
-      "id": "1d05",
-      "expense": 23,
-      "description": "bus",
-      "category": "Transporte",
+      "id": "72ea",
+      "expense": 15,
+      "description": "libros",
+      "category": "Educación",
+      "date": "2025-05-06T22:00:00.000Z"
+    },
+    {
+      "id": "709c",
+      "expense": 15,
+      "description": "x",
+      "category": "Ocio",
       "date": "2025-05-01T22:00:00.000Z"
     },
     {
-      "id": "8768",
-      "expense": 45,
-      "description": "calcetines",
-      "category": "Salud",
-      "date": "2025-05-07T22:00:00.000Z"
+      "id": "2735",
+      "expense": 23,
+      "description": "s",
+      "category": "Hogar",
+      "date": "2025-05-01T22:00:00.000Z"
     },
     {
-      "id": "84a6",
-      "expense": 34,
-      "description": "wewe",
-      "category": "Salud",
-      "date": "2025-04-30T22:00:00.000Z"
+      "id": "289d",
+      "expense": null,
+      "description": "",
+      "category": null,
+      "date": null
     }
   ]
 }

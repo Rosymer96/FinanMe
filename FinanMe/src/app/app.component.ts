@@ -5,9 +5,17 @@ import { ExpensesFormComponent } from './components/expenses-form/expenses-form.
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { IGasto } from './Interfaces/gasto';
 import { ServiceService } from './services/service.service';
+import { ExpensesChartComponent } from './components/expenses-chart/expenses-chart.component';
+import { HeaderComponent } from './components/header/header.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ExpensesFormComponent, ExpenseListComponent],
+  imports: [
+    RouterOutlet,
+    ExpensesFormComponent,
+    ExpenseListComponent,
+    ExpensesChartComponent,
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

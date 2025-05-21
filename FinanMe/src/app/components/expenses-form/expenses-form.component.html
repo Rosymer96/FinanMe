@@ -1,6 +1,6 @@
-<form [formGroup]="form" (submit)="onAddExpense()">
-  <mat-form-field>
-    <mat-label for="gasto">Ingresa el gasto</mat-label>
+<form [formGroup]="form" (submit)="onAddExpense()" class="form">
+  <mat-form-field class="form-field">
+    <mat-label for="gasto">Monto</mat-label>
     <input
       matInput
       type="number"
@@ -9,15 +9,15 @@
       formControlName="expense"
     />
   </mat-form-field>
-  <mat-form-field>
-    <mat-label for="categorias">Categoria:</mat-label>
+  <mat-form-field class="form-field">
+    <mat-label for="categorias">Categoria</mat-label>
     <mat-select name="categorias" id="categorias" formControlName="category">
       @for(category of categories; track $index ){
       <mat-option [value]="category">{{ category }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="form-field-description">
     <mat-label for="descripcion">Descripcion</mat-label>
     <input
       matInput
@@ -27,8 +27,8 @@
       formControlName="description"
     />
   </mat-form-field>
-  <mat-form-field>
-    <mat-label for="fecha">DD/MM/YYYY</mat-label>
+  <mat-form-field class="form-field-date">
+    <mat-label for="fecha">Fecha</mat-label>
     <input
       matInput
       [matDatepicker]="picker"
@@ -39,9 +39,9 @@
       formControlName="date"
     />
     <mat-datepicker-toggle matIconSuffix [for]="picker">
-      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
     </mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <button mat-raised-button type="submit">Añadir</button>
+  <button mat-raised-button type="submit" class="add-button">Añadir</button>
 </form>

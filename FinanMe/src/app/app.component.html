@@ -1,7 +1,13 @@
+<app-header></app-header>
 <app-expenses-form
   (newExpense)="onNewExpense($event)"
   [categories]="categories"
 ></app-expenses-form>
+<app-expenses-chart
+  [gastos]="gastos"
+  [total]="total"
+  [categories]="categories"
+></app-expenses-chart>
 <app-expense-list
   [gastos]="gastos"
   [total]="total"

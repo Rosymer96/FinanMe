@@ -22,9 +22,60 @@
     <input matInput formControlName="description" />
   </mat-form-field>
   <button mat-raised-button type="submit">Filtrar</button>
-  <button mat-raised-button type="button">Limpiar filtros</button>
+  <button mat-raised-button type="button" (click)="cleanFilters()">
+    Limpiar filtros
+  </button>
 </form>
 
+<!-- Tabla usando Material -->
+
+<mat-table [dataSource]="filteredGastos" class="mat-elevation-z2">
+  <!-- Fecha Column -->
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+    <mat-cell *matCellDef="let gasto">
+      {{ gasto.date | date : "dd/MM/yyyy" }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Categoria Column -->
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+    <mat-cell *matCellDef="let gasto"> {{ gasto.category }} </mat-cell>
+  </ng-container>
+
+  <!-- Descripción Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+    <mat-cell *matCellDef="let gasto"> {{ gasto.description }} </mat-cell>
+  </ng-container>
+
+  <!-- Importe Column -->
+  <ng-container matColumnDef="expense">
+    <mat-header-cell *matHeaderCellDef> Importe </mat-header-cell>
+    <mat-cell *matCellDef="let gasto"> € {{ gasto.expense }} </mat-cell>
+  </ng-container>
+
+  <!-- Eliminar Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let gasto">
+      <button mat-icon-button color="warn" (click)="onDeleteExpense(gasto.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Header and Rows (Se agrega un array displayedColumns en el TS)-->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<!-- Total Footer (No soporta el mat-footer actualmente, por ello se debe hacer fuera)-->
+<div class="total-container" style="text-align: right; margin-top: 1rem">
+  <strong>Total:</strong> € {{ total }}
+</div>
+<!-- 
 <table>
   <thead>
     <tr>
@@ -55,4 +106,4 @@
       <td>€ {{ total }}</td>
     </tr>
   </tfoot>
-</table>
+</table> -->

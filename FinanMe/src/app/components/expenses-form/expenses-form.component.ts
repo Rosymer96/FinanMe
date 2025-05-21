@@ -52,7 +52,6 @@ export class ExpensesFormComponent {
     date: new FormControl(),
   });
 
-
   onAddExpense() {
     const gastoCreation: IGastoCreation = this.form.value;
     this.servicioHttpService
