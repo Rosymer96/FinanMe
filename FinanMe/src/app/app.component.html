@@ -1,9 +1,10 @@
-<app-header></app-header>
+<app-header> </app-header>
 <app-expenses-chart
   [gastos]="gastos"
   [total]="total"
   [categories]="categories"
 ></app-expenses-chart>
+
 <app-expenses-form
   (newExpense)="onNewExpense($event)"
   [categories]="categories"
@@ -14,4 +15,3 @@
   (deleteExpense)="onDeleteExpense($event)"
   [categories]="categories"
 ></app-expense-list>
-<router-outlet />

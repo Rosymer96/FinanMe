@@ -1,41 +1,6 @@
 {
   "gastos": [
     {
-      "id": "72ea",
-      "expense": 15,
-      "description": "libros",
-      "category": "Educación",
-      "date": "2025-05-06T22:00:00.000Z"
-    },
-    {
-      "id": "709c",
-      "expense": 15,
-      "description": "x",
-      "category": "Ocio",
-      "date": "2025-05-01T22:00:00.000Z"
-    },
-    {
-      "id": "2735",
-      "expense": 23,
-      "description": "s",
-      "category": "Hogar",
-      "date": "2025-05-01T22:00:00.000Z"
-    },
-    {
-      "id": "289d",
-      "expense": null,
-      "description": "",
-      "category": null,
-      "date": null
-    },
-    {
-      "id": "16eb",
-      "expense": null,
-      "description": "",
-      "category": null,
-      "date": null
-    },
-    {
       "id": "c1eb",
       "expense": 14,
       "description": "",
@@ -62,20 +27,40 @@
       "description": "",
       "category": "Otros",
       "date": "2025-05-07T22:00:00.000Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Educación"
     },
     {
-      "id": "9000",
-      "expense": 34,
-      "description": "",
-      "category": "Salud",
-      "date": "2025-05-07T22:00:00.000Z"
+      "id": 2,
+      "name": "Transporte"
     },
     {
-      "id": "6112",
-      "expense": 43,
-      "description": "",
-      "category": "Alimentación",
-      "date": "2025-05-15T22:00:00.000Z"
+      "id": 3,
+      "name": "Ocio"
+    },
+    {
+      "id": 4,
+      "name": "Hogar"
+    },
+    {
+      "id": 5,
+      "name": "Ropa y Calzado"
+    },
+    {
+      "id": 6,
+      "name": "Otros"
+    },
+    {
+      "id": 7,
+      "name": "Salud"
+    },
+    {
+      "id": 8,
+      "name": "Alimentación"
     }
   ]
 }

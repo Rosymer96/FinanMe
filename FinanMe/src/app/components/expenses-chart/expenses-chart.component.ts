@@ -2,6 +2,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IGasto } from './../../Interfaces/gasto.d';
 import {
   Component,
+  inject,
   Input,
   OnChanges,
   OnInit,
@@ -9,8 +10,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { AppComponent } from '../../app.component';
 import { MatTableModule } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expenses-chart',
@@ -19,6 +20,8 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './expenses-chart.component.scss',
 })
 export class ExpensesChartComponent implements OnChanges {
+  router = inject(Router);
+
   @Input() gastos: IGasto[] = [];
   @Input() total: number = 0;
   @Input() categories: string[] = [];
@@ -50,4 +53,7 @@ export class ExpensesChartComponent implements OnChanges {
   }
 
   view: [number, number] = [400, 200];
+  addExpense(): void {
+    this.router.navigate(['anadir-gasto']);
+  }
 }
