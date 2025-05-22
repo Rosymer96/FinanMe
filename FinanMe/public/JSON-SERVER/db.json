@@ -27,6 +27,55 @@
       "description": "",
       "category": null,
       "date": null
+    },
+    {
+      "id": "16eb",
+      "expense": null,
+      "description": "",
+      "category": null,
+      "date": null
+    },
+    {
+      "id": "c1eb",
+      "expense": 14,
+      "description": "",
+      "category": "Transporte",
+      "date": "2025-05-01T22:00:00.000Z"
+    },
+    {
+      "id": "e371",
+      "expense": 15,
+      "description": "",
+      "category": "Educación",
+      "date": "2025-05-02T22:00:00.000Z"
+    },
+    {
+      "id": "6579",
+      "expense": 26,
+      "description": "",
+      "category": "Ropa y Calzado",
+      "date": "2025-05-07T22:00:00.000Z"
+    },
+    {
+      "id": "0168",
+      "expense": 32,
+      "description": "",
+      "category": "Otros",
+      "date": "2025-05-07T22:00:00.000Z"
+    },
+    {
+      "id": "9000",
+      "expense": 34,
+      "description": "",
+      "category": "Salud",
+      "date": "2025-05-07T22:00:00.000Z"
+    },
+    {
+      "id": "6112",
+      "expense": 43,
+      "description": "",
+      "category": "Alimentación",
+      "date": "2025-05-15T22:00:00.000Z"
     }
   ]
 }

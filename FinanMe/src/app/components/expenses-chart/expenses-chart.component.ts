@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { IGasto } from './../../Interfaces/gasto.d';
 import {
   Component,
@@ -13,7 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-expenses-chart',
-  imports: [NgxChartsModule, MatTableModule],
+  imports: [NgxChartsModule, MatTableModule, MatIconModule],
   templateUrl: './expenses-chart.component.html',
   styleUrl: './expenses-chart.component.scss',
 })
@@ -21,7 +22,7 @@ export class ExpensesChartComponent implements OnChanges {
   @Input() gastos: IGasto[] = [];
   @Input() total: number = 0;
   @Input() categories: string[] = [];
-  displayedColumns: string[] = ['name', 'value', 'percentage'];
+  displayedColumns: string[] = ['name', 'percentage', 'value'];
 
   chartData: { name: string; value: number; percentage?: number }[] = [];
   ngOnChanges(changes: SimpleChanges): void {
@@ -41,7 +42,7 @@ export class ExpensesChartComponent implements OnChanges {
         this.chartData.push({
           name: category,
           value: totalByCategory,
-          percentage: Number(percentage.toFixed(2)),
+          percentage: Number(percentage.toFixed(0)),
         });
       }
     }

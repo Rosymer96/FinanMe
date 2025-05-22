@@ -1,0 +1,28 @@
+.table {
+  justify-content: center;
+  margin-top: 30px;
+
+  .cdk-header-row {
+    display: none;
+  }
+  .mat-column-percentage {
+    text-align: center;
+    color: rgb(94, 93, 93);
+  }
+  .mat-column-value {
+    text-align: end;
+  }
+}
+
+.add-button-expense {
+  display: flex;
+  position: absolute;
+  border-radius: 50%;
+  padding: 1vw;
+  right: 40px;
+  top: 230px;
+  //   margin-right: 8vw;
+  //   margin-left: auto;
+  background-color: rgb(246, 208, 216);
+  border: 3px solid rgb(246, 208, 216);
+}

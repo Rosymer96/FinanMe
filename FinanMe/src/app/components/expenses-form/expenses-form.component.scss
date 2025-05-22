@@ -3,8 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 3vw;
-  gap: 3vw;
   justify-content: space-between;
+  align-items: center;
   .form-field {
     width: 48%;
     height: 8vh;
@@ -18,6 +18,6 @@
     height: 8vh;
   }
   .add-button {
-    left: 70vw;
+    margin-left: auto;
   }
 }
