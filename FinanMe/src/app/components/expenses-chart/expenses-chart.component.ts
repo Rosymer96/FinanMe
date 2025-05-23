@@ -74,7 +74,7 @@ export class ExpensesChartComponent implements OnInit {
     console.log(this.chartData);
   }
 
-  view: [number, number] = [400, 200];
+  view: [number, number] = [350, 300];
 
   addExpense(): void {
     this.router.navigate(['anadir-gasto']);

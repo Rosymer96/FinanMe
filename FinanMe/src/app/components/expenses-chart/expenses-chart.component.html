@@ -1,64 +1,35 @@
-<ngx-charts-pie-chart
-  [view]="view"
-  [results]="chartData"
-  [legend]="false"
-  [labels]="true"
-  [doughnut]="true"
-  [explodeSlices]="false"
-  [gradient]="true"
-  [animations]="true"
->
-  >
-</ngx-charts-pie-chart>
+<div class="component-container">
+  <div class="chart-container">
+    <ngx-charts-pie-chart
+      class="chart"
+      [view]="view"
+      [results]="chartData"
+      [legend]="false"
+      [labels]="true"
+      [doughnut]="true"
+      [explodeSlices]="false"
+      [gradient]="true"
+      [animations]="true"
+    >
+      >
+    </ngx-charts-pie-chart>
+    <div class="container-button">
+      <button mat-fab class="add-button-expense" (click)="addExpense()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- Boton para agregar un nuevo gasto -->
 
-<!-- Boton para agregar un nuevo gasto -->
+  <!-- Tabla usando Material -->
 
-<button mat-fab class="add-button-expense" (click)="addExpense()">
-  <mat-icon>add</mat-icon>
-</button>
-
-<!-- Tabla usando Material -->
-
-<table mat-table [dataSource]="chartData" class="table">
-  <!-- Categoría Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Categoría</th>
-    <td mat-cell *matCellDef="let data">{{ data.name }}</td>
-  </ng-container>
-
-  <!-- Porcentaje Column -->
-  <ng-container matColumnDef="percentage">
-    <th mat-header-cell *matHeaderCellDef>Porcentaje</th>
-    <td mat-cell *matCellDef="let data">{{ data.percentage }}%</td>
-  </ng-container>
-
-  <!-- Valor Column -->
-  <ng-container matColumnDef="value">
-    <th mat-header-cell *matHeaderCellDef>Total</th>
-    <td mat-cell *matCellDef="let data">€ {{ data.value }}</td>
-  </ng-container>
-
-  <!-- Header and Row declarations -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Categoría</th>
-      <th>Valor</th>
-      <th>Porcentaje</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(data of chartData; track $index) { @if(data.value > 0){
-    <tr>
-      <td>{{ data.name }}</td>
-      <td>€ {{ data.value }}</td>
-      <td>{{ data.percentage }}%</td>
-    </tr>
-    } }
-  </tbody>
-</table> -->
+  <div class="table">
+    @for(data of chartData; track $index){
+    <div class="row">
+      <div class="column name">{{ data.name }}</div>
+      <div class="column percentage">{{ data.percentage }} %</div>
+      <div class="column value">€ {{ data.value }}</div>
+    </div>
+    }
+  </div>
+</div>

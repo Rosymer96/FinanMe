@@ -29,13 +29,6 @@
       "date": "2025-05-07T22:00:00.000Z"
     },
     {
-      "id": "530b",
-      "expense": 15,
-      "description": "salir  A LA PICIMA",
-      "category": "Ocio",
-      "date": "2025-05-07T22:00:00.000Z"
-    },
-    {
       "id": "33d8",
       "expense": 15,
       "description": "",
@@ -55,6 +48,27 @@
       "description": "",
       "category": "Transporte",
       "date": "2025-05-01T22:00:00.000Z"
+    },
+    {
+      "id": "fd43",
+      "expense": 15,
+      "description": "",
+      "category": "Ocio",
+      "date": "2025-05-06T22:00:00.000Z"
+    },
+    {
+      "id": "332d",
+      "expense": 20,
+      "description": "",
+      "category": "Educación",
+      "date": "2025-05-08T22:00:00.000Z"
+    },
+    {
+      "id": "8f72",
+      "expense": 15,
+      "description": "Visita al museo",
+      "category": "Ocio",
+      "date": "2025-05-13T22:00:00.000Z"
     }
   ],
   "categories": [

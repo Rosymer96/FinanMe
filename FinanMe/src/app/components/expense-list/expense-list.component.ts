@@ -59,7 +59,7 @@ export class ExpenseListComponent implements OnInit {
   ];
 
   form: FormGroup = new FormGroup({
-    description: new FormControl(''),
+    description: new FormControl(),
     category: new FormControl(),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
@@ -70,24 +70,18 @@ export class ExpenseListComponent implements OnInit {
     this.expensesState.gastos$.subscribe((gastos) => {
       this.gastos = gastos;
       this.filteredGastos = [...this.gastos];
-      this.calculateTotal();
+      this.total = this.expensesState.total;
     });
 
     this.expensesState.categories$.subscribe((categories) => {
       this.categories = categories;
     });
   }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (changes['gastos']) {
-  //     this.filteredGastos = [...this.gastos];
-  //     this.calculateTotal();
-  //   }
-  // }
-  // total = input<number>();
-  //gastos = input<IGasto[]>();
-
+  submitted: boolean = false;
   filterData() {
     // console.log(this.form.value);
+    // debugger;
+    this.submitted = true;
 
     const { category, description, startDate, endDate } = this.form.value;
     // --- Filtrado con operadores ternarios ---
@@ -127,14 +121,15 @@ export class ExpenseListComponent implements OnInit {
     });
 
     // Recalcula el total según los resultados filtrados
-    this.calculateTotal();
+    this.total = this.calculateTotal();
   }
 
   cleanFilters() {
     console.log('limpiando');
     this.form.reset();
     this.filteredGastos = [...this.gastos];
-    this.calculateTotal();
+    this.total = this.calculateTotal();
+    this.submitted = false;
   }
 
   onDeleteExpense(id: number) {
