@@ -6,6 +6,7 @@
       type="number"
       name="gasto"
       id="gasto"
+      min="0"
       formControlName="expense"
     />
   </mat-form-field>
@@ -13,7 +14,7 @@
     <mat-label for="categorias">Categoria</mat-label>
     <mat-select name="categorias" id="categorias" formControlName="category">
       @for(category of categories; track $index ){
-      <mat-option [value]="category">{{ category }}</mat-option>
+      <mat-option [value]="category">{{ category.name }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -43,5 +44,16 @@
     </mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <div class="form-errors">
+    @if(form.controls['expense'].touched &&
+    form.controls['expense'].errors?.['min']){
+    <p>*El monto debe ser positivo.</p>
+    } @if( (form.controls['category'].invalid &&
+    form.controls['category'].touched) || (form.controls['expense'].invalid &&
+    form.controls['expense'].touched) || (form.controls['date'].invalid &&
+    form.controls['date'].touched)){
+    <p>*Completa los datos obligatorios.</p>
+    }
+  </div>
   <button mat-raised-button type="submit" class="add-button">Añadir</button>
 </form>

@@ -3,4 +3,8 @@ import { ExpensesFormComponent } from './components/expenses-form/expenses-form.
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { ExpensesChartComponent } from './components/expenses-chart/expenses-chart.component';
 
-export const routes: Routes = [{ path: '', component: ExpensesChartComponent }];
+export const routes: Routes = [
+  { path: '', component: ExpensesChartComponent },
+  { path: 'anadir-gasto', component: ExpensesFormComponent },
+  { path: 'gastos-lista', component: ExpenseListComponent },
+];

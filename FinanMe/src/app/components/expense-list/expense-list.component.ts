@@ -22,6 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { ExpensesStateService } from '../../services/expenses-state.service';
+import { ICategory } from '../../Interfaces/category';
 @Component({
   selector: 'app-expense-list',
   imports: [
@@ -38,16 +40,16 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './expense-list.component.html',
   styleUrl: './expense-list.component.scss',
 })
-export class ExpenseListComponent implements OnInit, OnChanges {
-  servicioHttpService = inject(ServicioHttpService);
-  services = inject(ServiceService);
-  @Input() gastos: IGasto[] = [];
-  @Input() total: number = 0;
-  @Input() categories: string[] = [];
+export class ExpenseListComponent implements OnInit {
+  private expensesState = inject(ExpensesStateService);
 
-  @Output() deleteExpense = new EventEmitter<number>();
-
+  gastos: IGasto[] = [];
+  categories: ICategory[] = [];
   filteredGastos: IGasto[] = [];
+  total: number = 0;
+
+  // @Output() deleteExpense = new EventEmitter<number>();
+
   displayedColumns: string[] = [
     'date',
     'category',
@@ -55,17 +57,6 @@ export class ExpenseListComponent implements OnInit, OnChanges {
     'expense',
     'actions',
   ];
-  ngOnInit(): void {
-    this.filteredGastos = [...this.gastos];
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['gastos']) {
-      this.filteredGastos = [...this.gastos];
-      this.getTotal();
-    }
-  }
-  // total = input<number>();
-  //gastos = input<IGasto[]>();
 
   form: FormGroup = new FormGroup({
     description: new FormControl(''),
@@ -74,8 +65,29 @@ export class ExpenseListComponent implements OnInit, OnChanges {
     endDate: new FormControl<Date | null>(null),
   });
 
+  ngOnInit(): void {
+    this.expensesState.loadData();
+    this.expensesState.gastos$.subscribe((gastos) => {
+      this.gastos = gastos;
+      this.filteredGastos = [...this.gastos];
+      this.calculateTotal();
+    });
+
+    this.expensesState.categories$.subscribe((categories) => {
+      this.categories = categories;
+    });
+  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['gastos']) {
+  //     this.filteredGastos = [...this.gastos];
+  //     this.calculateTotal();
+  //   }
+  // }
+  // total = input<number>();
+  //gastos = input<IGasto[]>();
+
   filterData() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
 
     const { category, description, startDate, endDate } = this.form.value;
     // --- Filtrado con operadores ternarios ---
@@ -83,7 +95,9 @@ export class ExpenseListComponent implements OnInit, OnChanges {
       // Si hay categoría ⇒  compara, si es igual da true, si es distinta da false ;
       //  si no hay categoria da true
 
-      const matchesCategory = category ? gasto.category === category : true;
+      const matchesCategory = category
+        ? gasto.category === category.name
+        : true;
 
       // Si hay descripción y esta esta incluida en gasto.description es true,
       // si no es false pero  si esta vacia es ⇒ true.
@@ -113,20 +127,21 @@ export class ExpenseListComponent implements OnInit, OnChanges {
     });
 
     // Recalcula el total según los resultados filtrados
-    this.getTotal();
+    this.calculateTotal();
   }
+
   cleanFilters() {
     console.log('limpiando');
     this.form.reset();
     this.filteredGastos = [...this.gastos];
-    this.getTotal();
+    this.calculateTotal();
   }
 
   onDeleteExpense(id: number) {
-    this.deleteExpense.emit(id);
+    this.expensesState.deleteExpense(id);
   }
 
-  getTotal(): number {
+  calculateTotal(): number {
     let total = this.filteredGastos.reduce(
       (acc, gasto) => acc + gasto.expense,
       0
