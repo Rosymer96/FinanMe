@@ -2,6 +2,7 @@
   display: flex;
   background-color: rgb(246, 208, 216);
   padding-right: 3vw;
+  height: 50px;
   .example-spacer {
     flex: 1 1 auto;
   }
@@ -21,15 +22,18 @@
     }
   }
   .menu-desktop {
+    display: none;
+  }
+  .menu-mobile {
     display: flex;
     flex-direction: column;
     background-color: rgb(247, 224, 228);
     position: absolute;
     padding: 3vw;
     gap: 3vw;
-    width: 50%;
+    width: 40%;
     height: 100vh;
-    top: 55px;
+    top: 50px;
     left: 0;
     align-items: center;
     z-index: 1000;
@@ -62,11 +66,35 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 200px;
+        width: 100%;
       }
     }
     .menu-desktop {
       display: flex;
+      flex-direction: row;
+      background-color: transparent;
+      position: relative;
+      padding: 3vw;
+      gap: 3vw;
+      width: 50%;
+      height: auto;
+      top: 0;
+      left: 0;
+      align-items: center;
+      z-index: 1000;
+      button {
+        width: 100%;
+        &.icon-login,
+        &.icon-logout {
+          padding: 0;
+          width: 1vw;
+          text-align: center;
+
+          mat-icon {
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }
