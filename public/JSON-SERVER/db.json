@@ -1,0 +1,66 @@
+{
+  "gastos": [
+    {
+      "id": "afad",
+      "expense": 20,
+      "description": "Cine",
+      "category": "Ocio",
+      "date": "2025-05-07T22:00:00.000Z"
+    },
+    {
+      "id": "8f72",
+      "expense": 15,
+      "description": "Visita al museo",
+      "category": "Ocio",
+      "date": "2025-05-13T22:00:00.000Z"
+    },
+    {
+      "id": "4cfd",
+      "expense": 22,
+      "description": "Pollo y verduras",
+      "category": "Comida",
+      "date": "2025-05-21T22:00:00.000Z"
+    },
+    {
+      "id": "98b9",
+      "expense": 23,
+      "description": "Recarga de tarjeta",
+      "category": "Transporte",
+      "date": "2025-05-22T22:00:00.000Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Educación"
+    },
+    {
+      "id": "2",
+      "name": "Transporte"
+    },
+    {
+      "id": "3",
+      "name": "Ocio"
+    },
+    {
+      "id": "4",
+      "name": "Hogar"
+    },
+    {
+      "id": "5",
+      "name": "Ropa y Calzado"
+    },
+    {
+      "id": "6",
+      "name": "Otros"
+    },
+    {
+      "id": "7",
+      "name": "Salud"
+    },
+    {
+      "id": "8",
+      "name": "Comida"
+    }
+  ]
+}
