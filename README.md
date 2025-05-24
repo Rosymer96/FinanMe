@@ -5,7 +5,7 @@ Aqui las indicaciones para poder correrlo:
 
 -El proyecto esta usando SCSS y Angular Material.
 
--He implementado el BehaviorSubject para manejar la data y poner usar las rutas de la forma en las que las habia planeado. (Commits anteriores pasaba la data por @input @output pero necesitaban estar siempre los componentes visibles en <app-component>).
+-He implementado el BehaviorSubject para manejar la data y poder usar las rutas de la forma en las que las había planeado. (En commits anteriores pasaba la data por @input @output pero necesitaban estar siempre los componentes visibles en <app-component>).
 
 El tiempo me ha quedado justo y tal vez los comentarios no sean suficientes.
 
