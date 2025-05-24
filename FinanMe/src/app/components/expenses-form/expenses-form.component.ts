@@ -1,22 +1,12 @@
 import { ExpensesStateService } from './../../services/expenses-state.service';
 import { ServiceService } from './../../services/service.service';
-import {
-  Component,
-  EventEmitter,
-  inject,
-  input,
-  Input,
-  OnInit,
-  Output,
-  output,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ServicioHttpService } from '../../services/servicio-http.service';
 import { IGasto, IGastoCreation } from '../../Interfaces/gasto';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -46,9 +36,11 @@ export class ExpensesFormComponent implements OnInit {
   private expensesState = inject(ExpensesStateService);
   private router = inject(Router);
 
-  public categories: ICategory[] = [];
+  public categories: ICategory[] = []; // Aquí guardamos las categorías disponibles
 
   ngOnInit(): void {
+    // Al iniciar el componente, cargamos los datos de gastos y categorías
+
     this.expensesState.loadData();
     this.expensesState.categories$.subscribe((categories) => {
       this.categories = categories;
@@ -59,30 +51,34 @@ export class ExpensesFormComponent implements OnInit {
   todayDate = new Date();
   today: string = this.todayDate.toISOString().split('T')[0];
 
-  //Construimos el formulario reactivo
+  //Construimos el formulario reactivo y lo validamos.
   form: FormGroup = new FormGroup({
     expense: new FormControl('', [Validators.required]),
     description: new FormControl(''),
     category: new FormControl('', [Validators.required, Validators.min(0)]),
     date: new FormControl('', [Validators.required]),
   });
-
+  // Métodos que se ejecuta cuando el usuario envía el formulario
   onAddExpense() {
     if (this.form.invalid) {
       // debugger;
       this.form.markAllAsTouched();
       return;
     }
-
+    // Obtenemos los valores del formulario
     const { expense, description, category, date } = this.form.value;
+    // Creamos el objeto que se enviará al servicio
     const gastoCreation: IGastoCreation = {
       expense,
       description,
-      category: category.name,
+      category: category.name, // Se espera que la categoría sea un objeto con `name`
       date,
     };
+    // Enviamos el gasto nuevo y reiniciamos el formulario
+
     this.expensesState.addExpense(gastoCreation);
     this.form.reset();
+    // Redirigimos a la lista de gastos
     this.router.navigate(['gastos-lista']);
   }
 }

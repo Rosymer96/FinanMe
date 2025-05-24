@@ -1,3 +1,20 @@
+Hola, este proyecto me ha tomado muchas horas de trabajo y esfuerzo para lograrlo. Sin embargo, estoy feliz de todo lo aprendido en este curso.
+
+Aqui las indicaciones para poder correrlo:
+-El db.json esta dentro del proyecto en la carpeta public/JSON-SERVER y debes ejecutarlo desde otra terminal con el comando: npm run start:api
+
+-El proyecto esta usando SCSS y Angular Material.
+
+-He implementado el BehaviorSubject para manejar la data y poner usar las rutas de la forma en las que las habia planeado. (Commits anteriores pasaba la data por @input @output pero necesitaban estar siempre los componentes visibles en <app-component>).
+
+El tiempo me ha quedado justo y tal vez los comentarios no sean suficientes.
+
+Espero tu feedback ya que va a ser muy útil para mi.
+
+Cariños,
+
+Rosa Vela
+
 # FinanMe
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.

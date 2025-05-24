@@ -1,18 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  input,
-  OnChanges,
-  OnInit,
-  Output,
-  output,
-  SimpleChanges,
-} from '@angular/core';
-import { ServicioHttpService } from '../../services/servicio-http.service';
+import { Component, inject, OnInit } from '@angular/core';
 import { IGasto } from '../../Interfaces/gasto';
-import { ServiceService } from '../../services/service.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -43,13 +30,14 @@ import { ICategory } from '../../Interfaces/category';
 export class ExpenseListComponent implements OnInit {
   private expensesState = inject(ExpensesStateService);
 
+  //Guardamos la informacion en estas variables.
+
   gastos: IGasto[] = [];
   categories: ICategory[] = [];
   filteredGastos: IGasto[] = [];
   total: number = 0;
 
-  // @Output() deleteExpense = new EventEmitter<number>();
-
+  // Columnas que se muestran en la tabla.
   displayedColumns: string[] = [
     'date',
     'category',
@@ -57,6 +45,7 @@ export class ExpenseListComponent implements OnInit {
     'expense',
     'actions',
   ];
+  // Formulario reactivo para los filtros (descripción, categoría y rango de fechas).
 
   form: FormGroup = new FormGroup({
     description: new FormControl(),
@@ -66,24 +55,28 @@ export class ExpenseListComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.expensesState.loadData();
+    this.expensesState.loadData(); // Cargamos datos al iniciar el componente.
     this.expensesState.gastos$.subscribe((gastos) => {
-      this.gastos = gastos;
-      this.filteredGastos = [...this.gastos];
-      this.total = this.expensesState.total;
+      this.gastos = gastos; // Cuando llegan los gastos, los guardamos.
+      this.filteredGastos = [...this.gastos]; // Inicialmente mostramos todos (sin filtrar).
+      this.total = this.expensesState.total; // Actualizamos el total con los gastos cargados.
     });
 
     this.expensesState.categories$.subscribe((categories) => {
-      this.categories = categories;
+      this.categories = categories; // Guardamos las categorías cuando llegan.
     });
   }
-  submitted: boolean = false;
-  filterData() {
-    // console.log(this.form.value);
-    // debugger;
-    this.submitted = true;
 
+  // Variable para saber si el usuario ya aplicó filtro.
+  submitted: boolean = false;
+
+  filterData() {
+    // debugger;
+    this.submitted = true; // Indicamos que el filtro fue activado.
+
+    // Extraemos los valores ingresados en el formulario.
     const { category, description, startDate, endDate } = this.form.value;
+
     // --- Filtrado con operadores ternarios ---
     this.filteredGastos = this.gastos.filter((gasto) => {
       // Si hay categoría ⇒  compara, si es igual da true, si es distinta da false ;
@@ -125,18 +118,18 @@ export class ExpenseListComponent implements OnInit {
   }
 
   cleanFilters() {
-    console.log('limpiando');
-    this.form.reset();
-    this.filteredGastos = [...this.gastos];
-    this.total = this.calculateTotal();
-    this.submitted = false;
+    this.form.reset(); // Limpiamos el formulario de filtros.
+    this.filteredGastos = [...this.gastos]; // Mostramos todos los gastos sin filtrar.
+    this.total = this.calculateTotal(); // Actualizamos el total.
+    this.submitted = false; // Indicamos que no hay filtros activos.
   }
 
   onDeleteExpense(id: number) {
-    this.expensesState.deleteExpense(id);
+    this.expensesState.deleteExpense(id); // Llamamos al servicio para eliminar el gasto por su id.
   }
 
   calculateTotal(): number {
+    // Sumamos todos los gastos que están en filteredGastos y devolvemos el resultado.
     let total = this.filteredGastos.reduce(
       (acc, gasto) => acc + gasto.expense,
       0

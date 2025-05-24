@@ -4,6 +4,7 @@ import { IGasto } from '../Interfaces/gasto';
   providedIn: 'root',
 })
 export class ServiceService {
+  //Servicio que contiene el metodo que se usa para calcular eltotal.
   public calculateTotal(gastos: IGasto[]): number {
     return gastos.reduce((acc, gasto) => acc + gasto.expense!, 0);
   }

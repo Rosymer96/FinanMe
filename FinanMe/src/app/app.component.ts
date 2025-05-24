@@ -12,6 +12,8 @@ import { ExpensesStateService } from './services/expenses-state.service';
 })
 export class AppComponent implements OnInit {
   expensesState = inject(ExpensesStateService);
+
+  //Invocando la data a través de expensesState en el OnInit para que esté cargada desde el inicio.
   ngOnInit(): void {
     this.expensesState.loadData();
   }

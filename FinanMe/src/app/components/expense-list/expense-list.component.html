@@ -1,8 +1,9 @@
 <div class="title-container">
   <h3>Mis gastos:</h3>
 </div>
-
+<!-- Formulario reactivo para la búsqueda con filtros usando Material de Angular -->
 <form [formGroup]="form" (submit)="filterData()" class="form">
+  <!-- Filtro de categoría -->
   <mat-form-field class="form-field">
     <mat-label>Categoría</mat-label>
     <mat-select formControlName="category">
@@ -11,6 +12,7 @@
       }
     </mat-select>
   </mat-form-field>
+  <!-- Filtro de fecha con un selector -->
   <mat-form-field class="form-field calendar">
     <mat-label>Fechas</mat-label>
     <mat-date-range-input [rangePicker]="picker">
@@ -24,15 +26,19 @@
     ></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
+  <!-- Filtro de descripcion -->
   <mat-form-field class="form-field-description">
     <mat-label>Descripción</mat-label>
-    <input matInput formControlName="description" />
+    <input maxlength="20" matInput formControlName="description" />
   </mat-form-field>
+  <!-- Mensaje de error si no se llega por lo menos un campo. -->
   @if (submitted&&!form.value['category']&&!form.value['description']
   &&!form.value['startDate']&&!form.value['endDate']) {
   <p class="form-errors">Selecciona uno o más filtros.</p>
   }
+  <!-- Botón para filtrar -->
   <button mat-raised-button type="submit" class="btn-filter">Filtrar</button>
+  <!-- Botón para limpiar el formulario -->
   <button
     mat-raised-button
     type="button"
@@ -84,7 +90,7 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Header and Rows (Se agrega un array displayedColumns en el TS)-->
+  <!-- Cabecera y filas-->
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
@@ -94,35 +100,3 @@
   <p class="total-text">Total:</p>
   <p>€ {{ total }}</p>
 </div>
-<!-- 
-<table>
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Categoria</th>
-      <th>Descripción</th>
-      <th>Importe</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(gasto of filteredGastos; track $index){
-    <tr>
-      <td>{{ gasto.date | date : "dd/MM/yyyy" }}</td>
-      <td>{{ gasto.category }}</td>
-      <td>{{ gasto.description }}</td>
-      <td>€ {{ gasto.expense }}</td>
-      <td>
-        <button type="button" (click)="onDeleteExpense(gasto.id)">
-          Eliminar
-        </button>
-      </td>
-    </tr>
-    }
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3">Total</td>
-      <td>€ {{ total }}</td>
-    </tr>
-  </tfoot>
-</table> -->

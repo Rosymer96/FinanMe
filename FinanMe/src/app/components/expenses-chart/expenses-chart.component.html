@@ -1,4 +1,5 @@
 <div class="component-container">
+  <!-- Contenedor del gráfico y botón de agregar -->
   <div class="chart-container">
     <ngx-charts-pie-chart
       class="chart"
@@ -14,16 +15,18 @@
       >
     </ngx-charts-pie-chart>
     <div class="container-button">
+      <!-- Botón flotante para añadir un nuevo gasto -->
+
       <button mat-fab class="add-button-expense" (click)="addExpense()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
   </div>
-  <!-- Boton para agregar un nuevo gasto -->
 
-  <!-- Tabla usando Material -->
+  <!-- Tabla personalizada hecha con divs  -->
 
   <div class="table">
+    <!-- Bucle que recorre cada categoría y muestra su información -->
     @for(data of chartData; track $index){
     <div class="row">
       <div class="column name">{{ data.name }}</div>

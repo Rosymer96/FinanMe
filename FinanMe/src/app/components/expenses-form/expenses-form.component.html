@@ -1,4 +1,7 @@
+<!-- Formulario reactivo, se conecta al FormGroup del componente -->
+
 <form [formGroup]="form" (submit)="onAddExpense()" class="form">
+  <!-- Campo para ingresar el monto del gasto en euros -->
   <mat-form-field class="form-field">
     <mat-label for="gasto" class="label">Monto EUR</mat-label>
     <input
@@ -10,6 +13,7 @@
       formControlName="expense"
     />
   </mat-form-field>
+  <!-- Selector de categoría del gasto -->
   <mat-form-field class="form-field">
     <mat-label for="categorias">Categoria</mat-label>
     <mat-select name="categorias" id="categorias" formControlName="category">
@@ -18,6 +22,7 @@
       }
     </mat-select>
   </mat-form-field>
+  <!-- Campo para la descripción del gasto -->
   <mat-form-field class="form-field-description">
     <mat-label for="descripcion">Descripcion</mat-label>
     <input
@@ -29,6 +34,7 @@
       formControlName="description"
     />
   </mat-form-field>
+  <!-- Selector de fecha del gasto -->
   <mat-form-field class="form-field-date">
     <mat-label for="fecha">Fecha</mat-label>
     <input
@@ -40,21 +46,26 @@
       max="{{ today }}"
       formControlName="date"
     />
+    <!-- Botón que abre el calendario -->
     <mat-datepicker-toggle matIconSuffix [for]="picker">
       <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
     </mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <!-- Mensajes de error que se muestran si hay problemas con los campos -->
   <div class="form-errors">
     @if(form.controls['expense'].touched &&
     form.controls['expense'].errors?.['min']){
     <p>*El monto debe ser positivo.</p>
-    } @if( (form.controls['category'].invalid &&
+    }
+    <!-- Si falta completar los campos obligatorios -->
+    @if( (form.controls['category'].invalid &&
     form.controls['category'].touched) || (form.controls['expense'].invalid &&
     form.controls['expense'].touched) || (form.controls['date'].invalid &&
     form.controls['date'].touched)){
     <p>*Completa los datos obligatorios.</p>
     }
   </div>
+  <!-- Botón para enviar el formulario -->
   <button mat-raised-button type="submit" class="add-button">Añadir</button>
 </form>
