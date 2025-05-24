@@ -1,6 +1,72 @@
 .toolbar {
+  display: flex;
   background-color: rgb(246, 208, 216);
+  padding-right: 3vw;
   .example-spacer {
     flex: 1 1 auto;
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+    width: 130px;
+    cursor: pointer;
+    .img-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+    }
+  }
+  .menu-desktop {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(247, 224, 228);
+    position: absolute;
+    padding: 3vw;
+    gap: 3vw;
+    width: 50%;
+    height: 100vh;
+    top: 55px;
+    left: 0;
+    align-items: center;
+    z-index: 1000;
+    button {
+      width: 100%;
+      &.icon-login,
+      &.icon-logout {
+        padding: 0;
+        width: 1vw;
+        text-align: center;
+
+        mat-icon {
+          text-align: center;
+        }
+      }
+    }
+  }
+  @media (min-width: 992px) {
+    .toolbar-icon {
+      display: none;
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 0;
+      cursor: pointer;
+      .img-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+      }
+    }
+    .menu-desktop {
+      display: flex;
+    }
   }
 }
