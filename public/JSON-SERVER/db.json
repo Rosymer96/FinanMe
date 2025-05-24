@@ -27,8 +27,79 @@
       "description": "Recarga de tarjeta",
       "category": "Transporte",
       "date": "2025-05-22T22:00:00.000Z"
+    },
+    {
+      "id": "a1b2",
+      "expense": 12.5,
+      "description": "Libro de texto",
+      "category": "Educación",
+      "date": "2025-05-24T10:00:00.000Z"
+    },
+    {
+      "id": "c3d4",
+      "expense": 5.0,
+      "description": "Billete de metro",
+      "category": "Transporte",
+      "date": "2025-05-23T08:30:00.000Z"
+    },
+    {
+      "id": "e5f6",
+      "expense": 18.0,
+      "description": "Entrada concierto",
+      "category": "Ocio",
+      "date": "2025-05-22T20:00:00.000Z"
+    },
+    {
+      "id": "g7h8",
+      "expense": 7.2,
+      "description": "Bombilla LED",
+      "category": "Hogar",
+      "date": "2025-05-21T16:45:00.000Z"
+    },
+    {
+      "id": "i9j0",
+      "expense": 19.99,
+      "description": "Calcetines y camiseta",
+      "category": "Ropa y Calzado",
+      "date": "2025-05-20T11:15:00.000Z"
+    },
+    {
+      "id": "k1l2",
+      "expense": 3.5,
+      "description": "Café y tostada",
+      "category": "Comida",
+      "date": "2025-05-19T09:00:00.000Z"
+    },
+    {
+      "id": "m3n4",
+      "expense": 9.8,
+      "description": "Medicamentos",
+      "category": "Salud",
+      "date": "2025-05-18T14:00:00.000Z"
+    },
+    {
+      "id": "o5p6",
+      "expense": 15.0,
+      "description": "Clase de yoga",
+      "category": "Ocio",
+      "date": "2025-05-17T17:30:00.000Z"
+    },
+    {
+      "id": "q7r8",
+      "expense": 4.5,
+      "description": "Gel de baño",
+      "category": "Otros",
+      "date": "2025-05-16T12:00:00.000Z"
+    },
+    {
+      "id": "s9t0",
+      "expense": 11.75,
+      "description": "Cena rápida",
+      "category": "Comida",
+      "date": "2025-05-15T21:00:00.000Z"
     }
   ],
+
   "categories": [
     {
       "id": "1",
