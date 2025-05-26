@@ -12,7 +12,11 @@ export class ServicioHttpService {
 
   httpClient = inject(HttpClient);
 
-  private API_URL_EXPENSES: string = 'http://localhost:3000/gastos';
+  private API_BASE_URL = 'https://finanme-api.onrender.com';
+
+  private API_URL_EXPENSES = `${this.API_BASE_URL}/gastos`;
+  private API_URL_CATEGORIES = `${this.API_BASE_URL}/categories`;
+
   // Método para obtener todos los gastos desde el servidor
   public getAll(): Observable<IGasto[]> {
     return this.httpClient.get<IGasto[]>(this.API_URL_EXPENSES);
@@ -27,6 +31,6 @@ export class ServicioHttpService {
   }
   // Método para obtener las categorías de gastos desde el servidor
   public getCategories(): Observable<ICategory[]> {
-    return this.httpClient.get<ICategory[]>('http://localhost:3000/categories');
+    return this.httpClient.get<ICategory[]>(this.API_URL_CATEGORIES);
   }
 }
