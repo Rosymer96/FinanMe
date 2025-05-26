@@ -1,21 +1,49 @@
-Hola, este proyecto me ha tomado muchas horas de trabajo y esfuerzo para lograrlo. Sin embargo, estoy feliz de todo lo aprendido en este curso.
+# FinanMe 💰
 
-Aqui las indicaciones para poder correrlo:
--El db.json esta dentro del proyecto en la carpeta public/JSON-SERVER y debes ejecutarlo desde otra terminal con el comando: npm run start:api
+**FinanMe** es una aplicación desarrollada con **Angular**, que simula una herramienta de control financiero personal. Es el resultado de muchas horas de trabajo, aprendizaje y dedicación durante mi formación como desarrolladora frontend.
 
--El proyecto esta usando SCSS y Angular Material.
+---
 
--He implementado el BehaviorSubject para manejar la data y poder usar las rutas de la forma en las que las había planeado. (En commits anteriores pasaba la data por @input @output pero necesitaban estar siempre los componentes visibles en <app-component>).
+## 🌐 Proyecto en Producción
 
-El tiempo me ha quedado justo y tal vez los comentarios no sean suficientes.
+- 🖥️ **Frontend (Angular)**: desplegado con [Vercel](https://finan-me-rosymer96s-projects.vercel.app/)
+- 📡 **API REST falsa (JSON Server)**: desplegada en [Render](https://finanme-jsonserver.onrender.com)
 
-Espero tu feedback ya que va a ser muy útil para mi.
+---
 
-Cariños,
+## 🛠️ Tecnologías y herramientas utilizadas
 
-Rosa Vela
+- **Angular CLI** (v19.2.9)
+- **Angular Material** para diseño UI responsivo y moderno
+- **SCSS** para estilos personalizados
+- **TypeScript** como lenguaje principal
+- **JSON Server** como fake REST API para pruebas locales
+- **BehaviorSubject** de RxJS para gestión de estado y comunicación entre componentes
+- **Vercel** para desplegar el frontend
+- **Render** para desplegar la API
 
-# FinanMe
+---
+
+## 🚀 ¿Qué he aprendido?
+
+- Cómo estructurar un proyecto Angular desde cero.
+- A trabajar con componentes, servicios, rutas y módulos.
+- El uso de `BehaviorSubject` para compartir datos entre componentes sin necesidad de `@Input` y `@Output`.
+- Buenas prácticas en el uso de Angular Material y la implementación de un diseño adaptado.
+- El despliegue de aplicaciones Angular en Vercel, y de APIs con JSON Server en Render.
+- Gestión de rutas, vistas dinámicas y errores 404 personalizados.
+
+---
+
+## 🧑‍💻 ¿Cómo ejecutar el proyecto en local?
+
+1. Clona este repositorio:
+
+````bash
+git clone https://github.com/Rosymer96/FinanMe.git
+cd FinanMe
+
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
@@ -25,7 +53,7 @@ To start a local development server, run:
 
 ```bash
 ng serve
-```
+````
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
