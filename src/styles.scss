@@ -1,4 +1,22 @@
 /* Aplicaciones reseteo global de estilos */
+@use "@angular/material" as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.datepicker-overrides(
+    (
+      // calendar-body-label-text-size: 20px,
+      // calendar-header-text-size: 30px,
+      // calendar-period-button-text-size: 10px
+    )
+  );
+  @include mat.form-field-overrides(
+    (
+      container-text-size: 10px,
+    )
+  );
+}
+
 *,
 *::before,
 *::after {
