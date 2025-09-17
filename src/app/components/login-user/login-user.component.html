@@ -1,0 +1,56 @@
+<div class="login-container">
+  <form [formGroup]="form" (submit)="onLogin()" class="form">
+    <h2 class="title">INICIA SESIÓN</h2>
+
+    <!-- Email -->
+    <mat-form-field class="form-field">
+      <mat-label for="email" class="label">E-mail</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+      <mat-hint></mat-hint>
+      @if (form.controls['email'].touched &&
+      form.get('email')?.errors?.['required']) {
+        <mat-error>Completa este campo para continuar.</mat-error>
+      }
+      @if(form.get('email')?.errors?.['email']) {
+        <mat-error>Formato inválido.</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field class="form-field">
+      <mat-label for="password" class="label">Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+      <mat-hint></mat-hint>
+      @if (form.controls['password'].touched &&
+      form.get('password')?.errors?.['required']) {
+        <mat-error>Completa este campo para continuar.</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button type="submit" class="add-button">
+      Iniciar sesión
+    </button>
+
+    <!-- Texto de registro -->
+    <div class="log-in-text">
+      <p>¿No tienes cuenta?<span class="log-in"> Crea tu cuenta</span></p>
+    </div>
+  </form>
+
+  @if(errorMessage){
+    <p>{{ errorMessage }}</p>
+  }
+</div>
