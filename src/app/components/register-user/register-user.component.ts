@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ICategory } from '../../Interfaces/category';
 import { MatButton } from '@angular/material/button';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-user',
   imports: [ReactiveFormsModule, MatInputModule],
@@ -23,6 +24,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class RegisterUserComponent {
   private userService = inject(UserService);
+  private router = inject(Router);
 
   errorMessage: string = '';
   messageResponse: string = '';
@@ -67,5 +69,8 @@ export class RegisterUserComponent {
           err.error?.message || 'No se pudo completar el registro.';
       },
     });
+  }
+  goToLogin() {
+    this.router.navigate(['/']);
   }
 }
