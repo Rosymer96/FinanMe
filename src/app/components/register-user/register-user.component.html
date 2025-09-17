@@ -1,6 +1,6 @@
-<div>
-  <h2>Registrar usuario</h2>
+<div class="register-container">
   <form [formGroup]="form" (submit)="onRegister()" class="form">
+    <h2 class="title">CREA TU CUENTA</h2>
     <mat-form-field class="form-field">
       <mat-label for="name" class="label">Nombre</mat-label>
       <input
@@ -20,7 +20,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-field">
-      <mat-label for="email" class="label">Email</mat-label>
+      <mat-label for="email" class="label">E-mail</mat-label>
       <input
         matInput
         type="email"
@@ -37,7 +37,7 @@
       }
     </mat-form-field>
     <mat-form-field class="form-field">
-      <mat-label for="password" class="label">Contrasena</mat-label>
+      <mat-label for="password" class="label">Contraseña</mat-label>
       <input
         matInput
         type="password"
@@ -58,5 +58,18 @@
       >
       }
     </mat-form-field>
+    <button mat-raised-button type="submit" class="add-button">
+      Crear cuenta
+    </button>
+    <div class="log-in-text">
+      <p>¿Ya tienes cuenta?<span class="log-in">Inicia sesión</span></p>
+    </div>
   </form>
+  @if(errorMessage){
+  <p>
+    {{ errorMessage }}
+  </p>
+  }@if(messageResponse){
+  <p>{{ messageResponse }}</p>
+  }
 </div>

@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ICategory } from '../../Interfaces/category';
+import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'app-register-user',
   imports: [ReactiveFormsModule, MatInputModule],
@@ -55,7 +56,7 @@ export class RegisterUserComponent {
       next: (res) => {
         if (res) {
           console.log('Registro existoso:', res.message);
-          this.messageResponse = 'La cuenta ha sido creada con exito';
+          this.messageResponse = 'La cuenta ha sido creada con exito.';
           this.form.reset();
           this.errorMessage = '';
         }
