@@ -20,7 +20,7 @@ export class HeaderComponent {
   }
   // Navega a la página principal (home) y cierra el menú
   goHome(): void {
-    this.router.navigate(['']);
+    this.router.navigate(['/gastos-lista']);
     this.isMenuOpen = false;
   }
 

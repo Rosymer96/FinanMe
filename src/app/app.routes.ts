@@ -11,6 +11,6 @@ export const routes: Routes = [
   {path:'login', component: LoginUserComponent},
   { path: 'anadir-gasto', component: ExpensesFormComponent },
   { path: 'gastos-lista', component: ExpenseListComponent },
-  { path: 'gastos', component: ExpenseListComponent },
+  { path: 'gastos', component: ExpensesChartComponent},
   { path: 'register', component: RegisterUserComponent },
 ];

@@ -40,12 +40,15 @@
       }
     }
   }
+  .message-response {
+    color: rgb(183, 67, 67);
+  }
 }
 
 @media (min-width: 992px) {
   .register-container {
     align-items: center;
-    .form{
+    .form {
       width: 400px;
     }
   }

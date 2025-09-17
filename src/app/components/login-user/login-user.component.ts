@@ -28,7 +28,13 @@ export class LoginUserComponent {
     password: new FormControl<string | null>(null, [Validators.required]),
   });
 
-  onLogin() {}
+  onLogin() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+    }
+    const email = this.form.value.email!.trim().toLowerCase();
+    const password = this.form.value.password!;
+  }
   goToRegister() {
     this.router.navigate(['/register']);
   }
