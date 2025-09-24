@@ -56,5 +56,8 @@ export class AuthService {
   public logout(): void {
     localStorage.clear();
   }
-  //
+  // Servicio que obtenga el token del usuario desde el localStorage
+  public getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 }
