@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class HeaderComponent {
   router = inject(Router);
+  private userService = inject(UserService);
   // Variable para controlar si el menú está abierto o cerrado en móbiles.
   isMenuOpen = false;
   // Abre o cierra el menú

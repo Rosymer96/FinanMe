@@ -66,8 +66,10 @@ export class ExpensesChartComponent implements OnInit {
     }
     // console.log(this.chartData);
   }
-  // Tamaño del gráfico en píxeles (ancho x alto)
+  // Tamaño del gráfico en píxeles (ancho x alto) 
   view: [number, number] = [350, 500];
+  // Opciones del gráfico
+  showLegend: boolean = true; 
 
   // Navega a la vista de añadir un nuevo gasto
   addExpense(): void {

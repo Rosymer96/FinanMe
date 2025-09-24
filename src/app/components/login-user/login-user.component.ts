@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login-user',
@@ -15,7 +16,8 @@ import { Router } from '@angular/router';
   styleUrl: './login-user.component.scss',
 })
 export class LoginUserComponent {
-  router = inject(Router);
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
   errorMessage: string = '';
   messageResponse: string = '';
@@ -34,7 +36,23 @@ export class LoginUserComponent {
     }
     const email = this.form.value.email!.trim().toLowerCase();
     const password = this.form.value.password!;
+
+    console.log('email', email, 'pasword:', password);
+
+    // Lógica para autenticar al usuario
+    this.authService.login(email, password).subscribe({
+      next: (response) => {
+        console.log('Login exitoso:', response);
+        this.router.navigate(['/gastos-lista']);
+      },
+      error: (error) => {
+        console.error('Error en el login:', error);
+        this.errorMessage =
+          'Credenciales inválidas. Por favor, inténtelo de nuevo.';
+      },
+    });
   }
+
   goToRegister() {
     this.router.navigate(['/register']);
   }
