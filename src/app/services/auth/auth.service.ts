@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../enviroments/enviroment';
 import { IUser, RegisterResponse } from '../../Interfaces/user';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -29,6 +29,21 @@ export class AuthService {
           }
         })
       );
+  }
+
+  public getUserProfile(): Observable<IUser | null> {
+    if (this.userProfile) {
+      return of(this.userProfile);
+    }
+    const userData = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    return this.httpClient.get<IUser>(`${this.API_URL}/profile`).pipe(
+      map((res) => {
+        this.userProfile = res;
+        return res;
+      })
+    );
   }
 
   // Servicio que permita guardar el token y el  user: { id: user.id,  name: user.name, email: user.email    } del usuario en el localStorage
