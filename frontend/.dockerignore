@@ -1,0 +1,27 @@
+node_modules
+npm-debug.log
+dist
+.angular
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+coverage
+karma.conf.js
+.editorconfig
+README.md
+.dockerignore
+docker-compose*.yml
+Dockerfile*
+.prettierrc
+.eslintrc.json
+.stylelintrc
+tsconfig.spec.json
+# keep angular.json so Docker build can find the Angular workspace

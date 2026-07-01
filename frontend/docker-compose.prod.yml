@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  angular-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        - NODE_ENV=production
+    container_name: finanme-angular-prod
+    environment:
+      - NODE_ENV=production
+      - TZ=UTC
+    ports:
+      - "80:4200"
+    restart: always
+    networks:
+      - finanme-network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:4200",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true
+    read_only_root_filesystem: true
+    tmpfs:
+      - /tmp
+      - /var/tmp
+
+networks:
+  finanme-network:
+    driver: bridge

@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbar">
+  <button
+    mat-icon-button
+    class="toolbar-icon"
+    aria-label="Abrir menú"
+    (click)="toggleMenu()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button class="logo" (click)="goHome()">
+    <img class="img-logo" src="/logo/logo-FinanMe.png" />
+  </button>
+  <span class="example-spacer"></span>
+
+  <div class="menu-desktop">
+    @if (currentUser$ | async; as user) {
+      <span class="user-chip">{{ user.name }}</span>
+      <button class="menu-button" mat-button (click)="goHome()">Panel</button>
+      <button mat-button (click)="addExpense()">Añadir</button>
+      <button mat-button (click)="filterExpenses()">Lista</button>
+      <button mat-button (click)="goStatistics()">Estadísticas</button>
+      <button mat-stroked-button color="primary" (click)="logout()">
+        Salir
+      </button>
+    } @else {
+      <button mat-button (click)="goLogin()">Entrar</button>
+      <button mat-raised-button color="primary" (click)="goRegister()">
+        Crear cuenta
+      </button>
+    }
+  </div>
+
+  @if (isMenuOpen) {
+    <div class="menu-mobile">
+      @if (currentUser$ | async; as user) {
+        <p class="mobile-user">Hola, {{ user.name }}</p>
+        <button class="menu-button" mat-button (click)="goHome()">Panel</button>
+        <button mat-button (click)="addExpense()">Añadir</button>
+        <button mat-button (click)="filterExpenses()">Lista</button>
+        <button mat-button (click)="goStatistics()">Estadísticas</button>
+        <button mat-stroked-button color="primary" (click)="logout()">
+          Salir
+        </button>
+      } @else {
+        <button mat-button (click)="goLogin()">Entrar</button>
+        <button mat-button (click)="goRegister()">Crear cuenta</button>
+      }
+    </div>
+  }
+</mat-toolbar>

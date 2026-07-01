@@ -1,0 +1,82 @@
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: radial-gradient(
+    circle at top,
+    #ffe8ef 0%,
+    #f6f7fb 45%,
+    #eef4ff 100%
+  );
+}
+
+.auth-hero {
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+  color: #24304a;
+}
+
+.auth-logo {
+  width: 180px;
+  max-width: 70vw;
+  margin-bottom: 1rem;
+}
+
+.auth-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+
+.auth-hero p {
+  font-size: 1.05rem;
+  color: #53627d;
+}
+
+.auth-card {
+  width: min(100%, 28rem);
+  margin: 0 auto;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(38, 54, 99, 0.12);
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.auth-form mat-form-field {
+  width: 100%;
+}
+
+.auth-action {
+  min-height: 48px;
+  border-radius: 999px;
+}
+
+.auth-error {
+  color: #c62828;
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 3rem;
+    padding: 3rem;
+  }
+
+  .auth-hero {
+    text-align: left;
+  }
+}

@@ -1,0 +1,43 @@
+<div class="component-container">
+  @if (chartData.length) {
+    <div class="chart-container">
+      <ngx-charts-pie-chart
+        class="chart"
+        [view]="view"
+        [results]="chartData"
+        [legend]="false"
+        [labels]="true"
+        [doughnut]="true"
+        [explodeSlices]="false"
+        [gradient]="true"
+        [animations]="true"
+      ></ngx-charts-pie-chart>
+      <div class="container-button">
+        <button mat-fab class="add-button-expense" (click)="addExpense()">
+          <mat-icon class="add-icon-expense">add</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="table">
+      @for (data of chartData; track $index) {
+        <div class="row">
+          <div class="column name">{{ data.name }}</div>
+          <div class="column percentage">{{ data.percentage }} %</div>
+          <div class="column value">€ {{ data.value }}</div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <h3>Tu gráfico aparecerá aquí</h3>
+      <p>
+        Añade tu primer gasto del mes para ver el reparto por categorías y tomar
+        mejores decisiones.
+      </p>
+      <button mat-raised-button color="primary" (click)="addExpense()">
+        Registrar gasto
+      </button>
+    </div>
+  }
+</div>

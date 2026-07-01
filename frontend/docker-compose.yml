@@ -1,0 +1,29 @@
+services:
+  angular-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: finanme-angular-dev
+    environment:
+      - NODE_ENV=development
+      - TZ=UTC
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./src:/app/src:ro
+      - ./public:/app/public:ro
+      - ./angular.json:/app/angular.json:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+      - ./tsconfig.app.json:/app/tsconfig.app.json:ro
+      - /app/node_modules
+      - /app/dist
+    command: npm start
+    stdin_open: true
+    tty: true
+    restart: on-failure
+    networks:
+      - finanme-network
+
+networks:
+  finanme-network:
+    driver: bridge

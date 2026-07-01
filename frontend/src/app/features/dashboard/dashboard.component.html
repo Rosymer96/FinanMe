@@ -1,0 +1,57 @@
+<section class="dashboard-shell">
+  @if (currentUser$ | async; as user) {
+    <header class="hero-card">
+      <div>
+        <p class="eyebrow">Tu espacio privado</p>
+        <h1>Hola, {{ user.name }} 👋</h1>
+        <p class="hero-copy">
+          Aquí puedes registrar, revisar y analizar tus gastos mensuales con una
+          experiencia pensada para uso diario.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <button mat-raised-button color="primary" (click)="goToAddExpense()">
+          Añadir gasto
+        </button>
+        <button mat-stroked-button type="button" (click)="logout()">
+          Cerrar sesión
+        </button>
+      </div>
+    </header>
+  }
+
+  <div class="dashboard-grid">
+    <mat-card class="summary-card">
+      <mat-card-title>Resumen mensual</mat-card-title>
+      <mat-card-content>
+        <p class="summary-text">
+          Consulta tus gastos, gráficos y filtros desde un único panel.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="summary-card accent">
+      <mat-card-title>Enfoque</mat-card-title>
+      <mat-card-content>
+        <p class="summary-text">
+          Entradas simples, feedback visual y control total de tu dinero.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="dashboard-layout">
+    <section class="panel">
+      <app-expenses-form></app-expenses-form>
+    </section>
+
+    <section class="panel">
+      <app-expenses-chart></app-expenses-chart>
+    </section>
+  </div>
+
+  <section class="panel list-panel">
+    <app-expense-list></app-expense-list>
+  </section>
+</section>
